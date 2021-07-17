@@ -10,7 +10,7 @@ func webserver() {
 
 	http.HandleFunc("/", handleInit)
 
-	err := http.ListenAndServe(*flagHTTPPort, nil) //nil의 정확한 용도를 이슈로 만들어봅시당.
+	err := http.ListenAndServe(*flagHTTPPort, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
