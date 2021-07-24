@@ -7,6 +7,8 @@ import (
 )
 
 func webserver() {
+	TEMPLATES = template.Must(template.ParseGlob("assets/html/*.html"))
+
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", handleInit)
 
@@ -17,16 +19,9 @@ func webserver() {
 }
 
 func handleInit(w http.ResponseWriter, r *http.Request) {
-	i, err := template.ParseFiles(
-		"assets/html/header.html",
-		"assets/html/init.html",
-		"assets/html/footer.html",
-	)
+	err := TEMPLATES.ExecuteTemplate(w, "init", nil)
 	if err != nil {
-		log.Fatal(err)
-	}
-	err = i.ExecuteTemplate(w, "init", nil)
-	if err != nil {
-		log.Fatal(err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 }

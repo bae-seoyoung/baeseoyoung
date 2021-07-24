@@ -5,9 +5,11 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"text/template"
 )
 
 var (
+	TEMPLATES    = template.New("")
 	flagHTTPPort = flag.String("http", "", "webservice port number")
 )
 
