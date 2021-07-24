@@ -7,9 +7,10 @@ import (
 )
 
 func webserver() {
-	http.HandleFunc("/", handleInit)
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", handleInit)
 
-	err := http.ListenAndServe(*flagHTTPPort, nil)
+	err := http.ListenAndServe(*flagHTTPPort, mux)
 	if err != nil {
 		log.Fatal(err)
 	}
