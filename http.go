@@ -7,7 +7,6 @@ import (
 )
 
 func webserver() {
-
 	http.HandleFunc("/", handleInit)
 
 	err := http.ListenAndServe(*flagHTTPPort, nil)
@@ -18,8 +17,9 @@ func webserver() {
 
 func handleInit(w http.ResponseWriter, r *http.Request) {
 	i, err := template.ParseFiles(
-		"html/header.html",
-		"html/init.html",
+		"assets/html/header.html",
+		"assets/html/init.html",
+		"assets/html/footer.html",
 	)
 	if err != nil {
 		log.Fatal(err)

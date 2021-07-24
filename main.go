@@ -7,7 +7,9 @@ import (
 	"os"
 )
 
-var flagHTTPPort = flag.String("http", "", "webservice port number")
+var (
+	flagHTTPPort = flag.String("http", "", "webservice port number")
+)
 
 func main() {
 	flag.Parse()
