@@ -7,7 +7,10 @@ import (
 )
 
 func webserver() {
+
 	TEMPLATES = template.Must(template.ParseGlob("assets/html/*.html"))
+
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", handleInit)
