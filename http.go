@@ -12,10 +12,9 @@ func webserver() {
 
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", handleInit)
+	http.HandleFunc("/", handleInit)
 
-	err := http.ListenAndServe(*flagHTTPPort, mux)
+	err := http.ListenAndServe(*flagHTTPPort, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
