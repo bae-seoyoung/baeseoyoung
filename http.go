@@ -10,11 +10,12 @@ func webserver() {
 
 	TEMPLATES = template.Must(template.ParseGlob("assets/html/*.html"))
 
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
+	mux := http.NewServeMux()
 
-	http.HandleFunc("/", handleInit)
+	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
+	mux.HandleFunc("/", handleInit)
 
-	err := http.ListenAndServe(*flagHTTPPort, nil)
+	err := http.ListenAndServe(*flagHTTPPort, mux)
 	if err != nil {
 		log.Fatal(err)
 	}
