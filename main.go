@@ -3,12 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
+	"html/template"
 	"log"
 	"os"
-	"text/template"
 )
 
 var (
+	// TEMPLATES 는 template 글로벌 변수입니다.
+	// VFS 내부의 html파일을 담기 위해 사용합니다.
 	TEMPLATES    = template.New("")
 	flagHTTPPort = flag.String("http", "", "webservice port number")
 )
