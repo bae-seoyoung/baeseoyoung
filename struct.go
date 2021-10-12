@@ -1,13 +1,17 @@
 package main
 
-type data struct {
+type Atom struct {
 	ID         int
-	author     string
-	createtime string
-	edittime   string
-	title      string
-	tags       []string
-	hide       bool
-	version    int
-	category   string
+	Author     string
+	Createtime string
+	Edittime   string
+	Title      string
+	Tags       []string
+	Hide       bool
+	Contents   []Content
+}
+
+type Content struct {
+	mimetype string
+	body     []byte
 }
