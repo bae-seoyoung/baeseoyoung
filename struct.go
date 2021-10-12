@@ -12,6 +12,6 @@ type Atom struct {
 }
 
 type Content struct {
-	mimetype string
-	body     []byte
+	Mimetype string
+	Body     []byte
 }
