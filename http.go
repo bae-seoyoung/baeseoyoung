@@ -31,9 +31,6 @@ func webserver() {
 
 	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 	mux.HandleFunc("/", handleInit)
-	mux.HandleFunc("/writing", handleWriting)
-	mux.HandleFunc("/yoga", handleYoga)
-	mux.HandleFunc("/dev", handleDev)
 
 	err = http.ListenAndServe(*flagHTTPPort, mux)
 	if err != nil {
@@ -43,30 +40,6 @@ func webserver() {
 
 func handleInit(w http.ResponseWriter, r *http.Request) {
 	err := TEMPLATES.ExecuteTemplate(w, "init", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-}
-
-func handleWriting(w http.ResponseWriter, r *http.Request) {
-	err := TEMPLATES.ExecuteTemplate(w, "writing", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-}
-
-func handleYoga(w http.ResponseWriter, r *http.Request) {
-	err := TEMPLATES.ExecuteTemplate(w, "yoga", nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-}
-
-func handleDev(w http.ResponseWriter, r *http.Request) {
-	err := TEMPLATES.ExecuteTemplate(w, "dev", nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
