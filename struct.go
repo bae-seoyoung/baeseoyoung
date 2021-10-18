@@ -16,6 +16,6 @@ type Atom struct {
 }
 
 type Content struct {
-	Type string `json:"type" bson:type"`
-	Body string `json:"body" bson:body"`
+	Type string `json:"type" bson:"type"`
+	Body string `json:"body" bson:"body"`
 }
