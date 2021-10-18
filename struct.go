@@ -16,6 +16,6 @@ type Atom struct {
 }
 
 type Content struct {
-	Mimetype string
-	Body     []byte
+	Type string `json:"type" bson:type"`
+	Body string `json:"body" bson:body"`
 }
