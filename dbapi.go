@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-// AddItem 은 데이터베이스에 Item(Project, Card, Client)를 넣는다.
+// AddItem 은 데이터베이스에 Item을 추가한다.
 func AddItem(client *mongo.Client, i Item) error {
 	collection := client.Database(*flagDBName).Collection("item")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
