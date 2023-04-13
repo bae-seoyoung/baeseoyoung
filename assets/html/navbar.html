@@ -1,0 +1,40 @@
+{{define "navbar"}}
+<header>
+    <div class="navbar">
+        <div class="logo"><a href="#">BAE SEO YOUNG</a></div>
+        <ul class="links">
+            <li><a href="hero">Home</a></li>
+            <li><a href="services">services</a></li>
+            <li><a href="project">project</a></li>
+            <li><a href="article">article</a></li>
+            <li><a href="contact">contact</a></li>
+        </ul>
+        <div class="toggle_btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+
+    <div class="dropdown_menu">
+        <li><a href="hero">Home</a></li>
+        <li><a href="services">services</a></li>
+        <li><a href="project">project</a></li>
+        <li><a href="article">article</a></li>
+        <li><a href="contact">contact</a></li>
+    </div>
+</header>
+
+<script>
+    const toggleBtn = document.querySelector('.toggle_btn')
+    const toggleBtnIcon = document.querySelector('.toggle_btn i')
+    const dropDownMenu = document.querySelector('.dropdown_menu')
+
+    toggleBtn.onclick = function () {
+        dropDownMenu.classList.toggle('open')
+        const isOpen = dropDownMenu.classList.contains('open')
+
+        toggleBtnIcon.classList = isOpen
+        ? 'fa-solid fa-xmark'
+        : 'fa-solid fa-bars'
+    }
+</script>
+{{end}}
