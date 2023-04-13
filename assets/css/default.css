@@ -52,3 +52,15 @@ header{
     font-size: 1.5rem;
     cursor:pointer;
 }
+
+.action_btn{
+    background-color:rgb(41, 74, 124);
+    color:black;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
