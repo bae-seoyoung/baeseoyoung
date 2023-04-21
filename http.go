@@ -31,8 +31,11 @@ func webserver() {
 
 	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 	mux.HandleFunc("/", handleInit)
-	mux.HandleFunc("/contact", handleContact)
+
+	mux.HandleFunc("/about", handleAbout)
+	mux.HandleFunc("/project", handleProject)
 	mux.HandleFunc("/article", handleArticle)
+	mux.HandleFunc("/contact", handleContact)
 
 	err = http.ListenAndServe(*flagHTTPPort, mux)
 	if err != nil {
@@ -48,8 +51,16 @@ func handleInit(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func handleContact(w http.ResponseWriter, r *http.Request) {
-	err := TEMPLATES.ExecuteTemplate(w, "contact", nil)
+func handleAbout(w http.ResponseWriter, r *http.Request) {
+	err := TEMPLATES.ExecuteTemplate(w, "about", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func handleProject(w http.ResponseWriter, r *http.Request) {
+	err := TEMPLATES.ExecuteTemplate(w, "project", nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -58,6 +69,14 @@ func handleContact(w http.ResponseWriter, r *http.Request) {
 
 func handleArticle(w http.ResponseWriter, r *http.Request) {
 	err := TEMPLATES.ExecuteTemplate(w, "article", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func handleContact(w http.ResponseWriter, r *http.Request) {
+	err := TEMPLATES.ExecuteTemplate(w, "contact", nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
