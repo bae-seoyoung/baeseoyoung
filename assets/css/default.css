@@ -98,6 +98,17 @@ section#hero{
     margin-bottom: 1rem;
 }
 
+/* CONTENT */
+.content{
+    display:flex;
+    justify-content: center;
+}
+.box{
+    width: 80vw;
+    height:40vw;
+    background: rgba(255, 255, 255, 0.5);
+}
+
 /* RESPONSIVE DESIGN */
 
 @media(max-width: 992px){
